@@ -93,4 +93,28 @@ TODO:
 Create a diagram depicting the situation where the user creates a new note using the single page version of the app.
 
 **Solution:**
-TODO:
+```
+note right of browser:
+assuming the page is loaded
+end note
+
+note over browser:
+user fills note text into the input field and clicks the submit button
+end note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+
+note right of server:
+POST request payload contains the note text from the input field
+end note
+
+note over server:
+server reads and processes the note from the POST request payload
+end note
+
+server-->browser: 201 {"message":"note created"}
+
+note over browser:
+JS adds the new note to the least using DOM API / redraws the notes; no page reload is needed
+end note
+```
