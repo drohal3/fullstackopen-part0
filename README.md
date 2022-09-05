@@ -86,7 +86,8 @@ end note
 Create a diagram depicting the situation where the user goes to the [single page app](https://fullstackopen.com/en/part0/fundamentals_of_web_apps#single-page-app) version of the notes app at https://studies.cs.helsinki.fi/exampleapp/spa.
 
 **Solution:**
-TODO:
+The page is loaded the same way as in the case above. Browser fetches HTML, then it goes through it and loads css, js and other files as defined.
+The difference is in the content of the .js files content that takes over some of the responsibilities that are on the server side in traditional web applications.
 
 ## Exercise 0.6: New note
 **Task:**
