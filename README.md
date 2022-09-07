@@ -163,6 +163,7 @@ end note
 server-->browser: 201 {"message":"note created"}
 
 note over browser:
-JS adds the new note to the least using DOM API / redraws the notes; no page reload is needed
+browser executes the event handler
+that renders notes to display
 end note
 ```
