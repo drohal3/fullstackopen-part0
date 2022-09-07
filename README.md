@@ -74,12 +74,36 @@ note over server:
 server reads and processes the note from the POST request payload
 end note
 
-server->browser: HTTP 302
+server-->browser: HTTP 302
+
+note right of browser:
+browser reloads the page; 
+the page is loaded as in the sequence diagram in the task 
+and contains the new note
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+server-->browser: HTML-code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server-->browser: main.js
 
 note over browser:
-browser reloads the page; the page is loaded as in the sequence diagram in the task and contains the new note
+browser starts executing js-code
+that requests JSON data from server
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
+
+note over browser:
+browser executes the event handler
+that renders notes to display
 end note
 ```
+
+Visualized in Exercise-0-4.png
 
 ## Exercise 0.5: Single page app
 **Task:**
@@ -88,6 +112,29 @@ Create a diagram depicting the situation where the user goes to the [single page
 **Solution:**
 The page is loaded the same way as in the case above. Browser fetches HTML, then it goes through it and loads css, js and other files as defined.
 The difference is in the content of the .js files content that takes over some of the responsibilities that are on the server side in traditional web applications.
+
+```
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+server-->browser: HTML-code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+server-->browser: spa.js
+
+note over browser:
+browser starts executing js-code
+that requests JSON data from server
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
+
+note over browser:
+browser executes the event handler
+that renders notes to display
+end note
+```
+Visualized in Exercise-0-5.png
 
 ## Exercise 0.6: New note
 **Task:**
@@ -116,6 +163,7 @@ end note
 server-->browser: 201 {"message":"note created"}
 
 note over browser:
-JS adds the new note to the least using DOM API / redraws the notes; no page reload is needed
+browser executes the event handler
+that renders notes to display
 end note
 ```
