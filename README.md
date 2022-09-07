@@ -167,3 +167,4 @@ browser executes the event handler
 that renders notes to display
 end note
 ```
+Visualized in Exercise-0-6.png
