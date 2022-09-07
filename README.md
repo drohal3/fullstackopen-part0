@@ -74,7 +74,7 @@ note over server:
 server reads and processes the note from the POST request payload
 end note
 
-server->browser: HTTP 302
+server-->browser: HTTP 302
 
 note over browser:
 browser reloads the page; the page is loaded as in the sequence diagram in the task and contains the new note
